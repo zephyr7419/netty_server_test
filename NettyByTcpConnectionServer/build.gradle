@@ -28,6 +28,9 @@ dependencies {
 	implementation 'io.netty:netty-all:4.1.94.Final'
 	implementation 'io.projectreactor:reactor-core'
 	implementation 'io.projectreactor.netty:reactor-netty-core'
+	implementation 'org.springframework:spring-messaging'
+	implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
+	implementation 'org.springframework.integration:org.springframework.integration.mqtt'
 	implementation files('libs/chirpstack-api-3.12.4.jar')
 
 	compileOnly 'org.projectlombok:lombok'

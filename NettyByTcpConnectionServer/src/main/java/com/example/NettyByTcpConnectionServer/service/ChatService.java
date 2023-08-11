@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ChatService {
 
+    private final ClientMappingService clientMappingService;
     private final Map<ChannelHandlerContext, Integer> clientsOrderMap = new ConcurrentHashMap<>();
     private final Map<ChannelHandlerContext, ClientState> clientStates = new ConcurrentHashMap<>();
     private ChannelHandlerContext currentChattingClient;
@@ -29,6 +32,7 @@ public class ChatService {
 
     // 클라이언트 연결 시 호출
     public void addClient(ChannelHandlerContext ctx) {
+        clientMappingService.addClient(ctx);
         clientsOrderMap.put(ctx, ++orderCounter);
     }
 

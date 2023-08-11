@@ -6,3 +6,24 @@ server:
     worker-count: 10
     keep-alive: true
     backlog: 100
+
+spring:
+  cloud:
+    stream:
+      bindings:
+        input-in-0:
+          destination: application/#
+          binder: mqtt
+        output-out-0:
+          destination: application/#
+          binder: mqtt
+      binders:
+        mqtt:
+          type: mqtt
+          environment:
+            spring:
+              cloud:
+                stream:
+                  mqtt:
+                    url: tcp://localhost:1883
+                    clientId: myClient
