@@ -83,29 +83,5 @@ public class ChatService {
             ctx.writeAndFlush(buf);
         }
     }
-
-//    public void handleMessageFromClient(ChannelHandlerContext ctx, String message) {
-//        log.info("Received message: {}", message);
-//        currentChattingClient = ctx;
-//        clientStates.put(ctx, ClientState.CHATTING);
-//        int port = ((InetSocketAddress) ctx.channel().remoteAddress()).getPort();
-//        if (clientStates.get(ctx).equals(ClientState.CHATTING)) {
-//            adminSendMessageToClient(port, message);
-//        } else {
-//            sendRequestToClient(ctx, message);
-//        }
-//    }
-
-//    public void adminSendMessageToClient(int port, String message) {
-//
-//        if (port != clientsOrderMap.get(ctx)) {
-//            log.warn("해당 포트의 클라이언트가 없습니다: " + port);
-//            return;
-//        }
-//
-//        ByteBuf buf = Unpooled.copiedBuffer(message, CharsetUtil.UTF_8);
-//        ctx.writeAndFlush(buf);
-//        log.info("관리자로부터 클라이언트에 메시지 전송: {}", message);
-//    }
 }
 
